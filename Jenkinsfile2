@@ -43,6 +43,7 @@ pipeline {
  
                 failure{
                     echo 'Deployement Failure on PRODUCTION'
+                    }
                 }
             }
         }
