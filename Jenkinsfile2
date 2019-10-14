@@ -5,25 +5,28 @@ pipeline {
             steps {
                 /*For windows machine */
                bat  'mvn clean package'
-
+ 
                 /*For Mac & Linux machine */
                // sh  'mvn clean package'
             }
-        
+ 
             post{
                 success{
                     echo 'Now Archiving ....'
-
+ 
                     archiveArtifacts artifacts : '**/*.war'
                 }
             }
         }
-        stage ('Deploy Build in Staging Area') {
+ 
+        stage ('Deploy Build in Staging Area'){
             steps{
-
-                build job : 'Deploy_StagingArea_Pipeline'
+ 
+                build job : 'Deploy-StagingArea-Piple'
+ 
             }
         }
+ 
         stage ('Deploy to Production'){
             steps{
                 timeout (time: 5, unit:'DAYS'){
